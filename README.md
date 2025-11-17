@@ -12,6 +12,7 @@ type User = {
 type UserKey = keyof User; // "name" | "age" | "address"
 
 
+---
 
 
 any, unknown , never এর বাবহার:
@@ -39,6 +40,10 @@ const throwError = (msg: string): never => {
 };
 
 throwError('This is an error')
+
+
+---
+
 
 Union and Intersection typer এর ব্যবহার:
 
