@@ -29,7 +29,7 @@ class Person {
         this.age = age;
     }
     getDetails() {
-        return `Name: [${this.name}], Age: [${this.age}]`;
+        return `Name: ${this.name}, Age: ${this.age}`;
     }
 }
 
@@ -42,6 +42,17 @@ function filterByRating(elements: elementType[]): elementType[] {
     return elements.filter(i => i.rating >= 4)
 }
 
+interface User {
+    id: number;
+    name: string;
+    email: string;
+    isActive: boolean;
+}
+
+function filterActiveUsers(users: User[]): User[] {
+    return users.filter(user => user.isActive === true);
+}
+
 interface Book {
     title: string;
     author: string;
@@ -49,7 +60,7 @@ interface Book {
     isAvailable: boolean;
 }
 function printBookDetails(element: Book): void {
-    console.log(`Title: [${element.title}], Author: [${element.author}], Published: [${element.publishedYear}], Available: [${element.isAvailable ? 'Yes' : 'No'}]`);
+    console.log(`Title: ${element.title}, Author: ${element.author}, Published: ${element.publishedYear}, Available: ${element.isAvailable ? 'Yes' : 'No'}`);
 }
 
 
@@ -62,11 +73,11 @@ function getUniqueValues<T>(arr1: T[], arr2: T[]): T[] {
         return false;
     }
     for (const item of arr1) {
-        if (!checkRepeat(item)) unique.push(item);
+        if (!checkRepeat(item)) unique[unique.length] = item;
 
     }
     for (const item of arr2) {
-        if (!checkRepeat(item)) unique.push(item);
+        if (!checkRepeat(item)) unique[unique.length] = item;
 
     }
     return unique;
