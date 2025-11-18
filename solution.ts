@@ -54,7 +54,22 @@ function printBookDetails(element: Book): void {
 
 
 function getUniqueValues<T>(arr1: T[], arr2: T[]): T[] {
-    return Array.from(new Set([...arr1, ...arr2]));
+    const unique: T[] = [];
+    function checkRepeat(value: T): boolean {
+        for (const i of unique) {
+            if (i === value) return true;
+        }
+        return false;
+    }
+    for (const item of arr1) {
+        if (!checkRepeat(item)) unique.push(item);
+
+    }
+    for (const item of arr2) {
+        if (!checkRepeat(item)) unique.push(item);
+
+    }
+    return unique;
 }
 
 interface Product {
@@ -74,3 +89,4 @@ function calculateTotalPrice(element: Product[]): number {
 
     return ans;
 }
+
